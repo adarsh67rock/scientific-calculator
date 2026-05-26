@@ -1,0 +1,210 @@
+from tkinter import *
+import math
+first_num=second_num=operator=None
+def digit_display(number):
+    current=result["text"]
+    new=current+str(number)
+    result.configure(text=new)
+
+def clear():
+    result.configure(text="")
+
+def operat(op):
+    global first_num,second_num,operator
+    first_num=float(result["text"])
+    operator=op
+    result.config(text="")
+
+def equal():
+    global first_num,second_num,operator
+    if result["text"]=='':
+        second_num=0
+    else:
+        second_num=float(result["text"])
+    if operator=="+":
+        result.config(text=str(first_num+second_num))
+    elif operator=="-":
+        result.config(text=str(first_num-second_num))
+    elif operator=="*":
+        result.config(text=str(first_num*second_num))
+    elif operator=="√":
+        result.config(text=str(math.sqrt(first_num)))
+    elif operator=="1/n":
+        result.config(text=str(1/first_num))
+    elif operator=="/":
+        if second_num==0:
+            result.config(text="error")
+        else:
+            result.config(text=str(first_num/second_num))
+    elif operator=="%":
+        if second_num==0:
+            result.config(text="error")
+        else:
+            result.config(text=str(first_num % second_num))
+    elif operator=="x²":
+        result.config(text=str(first_num**2))
+    elif operator=="eⁿ":
+        result.config(text=str(2.718**first_num))
+    elif operator=="xʸ":
+        result.config(text=str(first_num**second_num))
+    elif operator=="log":
+        result.config(text=str(math.log10(first_num)))
+    elif operator=="ln":
+        result.config(text=str(math.log(first_num)))
+    elif operator=="sin-1":
+        result.config(text=str(math.degrees(math.asin(first_num))))
+    elif operator=="cos-1":
+        result.config(text=str(math.degrees(math.acos(first_num))))
+    elif operator=="tan-1":
+        result.config(text=str(math.degrees(math.atan(first_num))))
+    elif operator=="sin":
+        result.config(text=str(math.sin(math.radians(first_num))))
+    elif operator=="cos":
+        result.config(text=str(math.cos(math.radians(first_num))))
+    elif operator=="tan":
+        result.config(text=str(math.tan(math.radians(first_num))))
+
+                      
+        
+        
+    
+root=Tk()
+root.title("adarsh's calculator")
+root.configure(bg="plum1")
+root.geometry("416x313")
+root.resizable(0,0)
+result=Label(root,text="",fg="maroon1",bg="plum1")
+result.grid(pady=(30,20),columnspan=5,sticky='w')
+result.configure(font=("caliber",20,"bold"))
+
+but7=Button(root,text="7",fg="white",bg="grey38",command=lambda: digit_display(7))
+but7.grid(row=1,column=2)
+but7.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+but8=Button(root,text="8",fg="white",bg="grey38",command=lambda: digit_display(8))
+but8.grid(row=1,column=3)
+but8.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+but9=Button(root,text="9",fg="white",bg="grey38",command=lambda: digit_display(9))
+but9.grid(row=1,column=4)
+but9.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butplu=Button(root,text="+",fg="white",bg="orchid1",command=lambda: operat("+"))
+butplu.grid(row=1,column=5)
+butplu.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+but5=Button(root,text="5",fg="white",bg="grey38",command=lambda: digit_display(5))
+but5.grid(row=2,column=3)
+but5.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+but6=Button(root,text="6",fg="white",bg="grey38",command=lambda: digit_display(6))
+but6.grid(row=2,column=4)
+but6.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+but4=Button(root,text="4",fg="white",bg="grey38",command=lambda: digit_display(4))
+but4.grid(row=2,column=2)
+but4.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butmin=Button(root,text="-",fg="white",bg="orchid1",command=lambda: operat("-"))
+butmin.grid(row=2,column=5)
+butmin.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+but1=Button(root,text="1",fg="white",bg="grey38",command=lambda: digit_display(1))
+but1.grid(row=3,column=2)
+but1.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+but2=Button(root,text="2",fg="white",bg="grey38",command=lambda: digit_display(2))
+but2.grid(row=3,column=3)
+but2.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+but3=Button(root,text="3",fg="white",bg="grey38",command=lambda: digit_display(3))
+but3.grid(row=3,column=4)
+but3.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butmul=Button(root,text="*",fg="white",bg="orchid1",command=lambda: operat("*"))
+butmul.grid(row=3,column=5)
+butmul.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+but0=Button(root,text="0",fg="white",bg="grey38",command=lambda: digit_display(0))
+but0.grid(row=4,column=3)
+but0.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butc=Button(root,text="C",fg="white",bg="orchid2",command=lambda: clear())
+butc.grid(row=4,column=6)
+butc.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butequ=Button(root,text="=",fg="white",bg="orchid1",command=lambda: equal())
+butequ.grid(row=4,column=7)
+butequ.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butdiv=Button(root,text="/",fg="white",bg="orchid1",command=lambda: operat("/"))
+butdiv.grid(row=4,column=5)
+butdiv.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butmod=Button(root,text="%",fg="white",bg="orchid3",command=lambda: operat("%"))
+butmod.grid(row=4,column=4)
+butmod.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butsqrt=Button(root,text="√",fg="white",bg="orchid1",command=lambda: operat("√"))
+butsqrt.grid(row=1,column=1)
+butsqrt.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butdeno=Button(root,text="1/n",fg="white",bg="orchid2",command=lambda: operat("1/n"))
+butdeno.grid(row=4,column=0)
+butdeno.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butexp=Button(root,text="eⁿ",fg="white",bg="orchid2",command=lambda: operat("eⁿ"))
+butexp.grid(row=3,column=0)
+butexp.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+
+
+butxkiy=Button(root,text="xʸ",fg="white",bg="orchid2",command=lambda: operat("xʸ"))
+butxkiy.grid(row=1,column=0)
+butxkiy.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butxka2=Button(root,text="x²",fg="white",bg="orchid2",command=lambda: operat("x²"))
+butxka2.grid(row=2,column=0)
+butxka2.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+bute=Button(root,text="e",fg="white",bg="orchid1",command=lambda: digit_display(2.71828))
+bute.grid(row=4,column=1)
+bute.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butlog=Button(root,text="log",fg="white",bg="orchid1",command=lambda: operat("log"))
+butlog.grid(row=2,column=1)
+butlog.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butln=Button(root,text="ln",fg="white",bg="orchid1",command=lambda: operat("ln"))
+butln.grid(row=3,column=1)
+butln.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butpoint=Button(root,text=".",fg="white",bg="orchid3",command=lambda: digit_display("."))
+butpoint.grid(row=4,column=2)
+butpoint.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butsin=Button(root,text="sin",fg="white",bg="orchid2",command=lambda: operat("sin"))
+butsin.grid(row=1,column=6)
+butsin.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butsin1=Button(root,text="sin-1",fg="white",bg="orchid1",command=lambda: operat("sin-1"))
+butsin1.grid(row=1,column=7)
+butsin1.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butcos=Button(root,text="cos",fg="white",bg="orchid2",command=lambda: operat("cos"))
+butcos.grid(row=2,column=6)
+butcos.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+butcos1=Button(root,text="cos-1",fg="white",bg="orchid1",command=lambda: operat("cos-1"))
+butcos1.grid(row=2,column=7)
+butcos1.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+buttan=Button(root,text="tan",fg="white",bg="orchid2",command=lambda: operat("tan"))
+buttan.grid(row=3,column=6)
+buttan.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+buttan1=Button(root,text="tan-1",fg="white",bg="orchid1",command=lambda: operat("tan-1"))
+buttan1.grid(row=3,column=7)
+buttan1.configure(width=6,height=3,font=("calibre",9,"bold"))
+
+root.mainloop()
